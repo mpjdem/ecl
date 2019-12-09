@@ -1,0 +1,18 @@
+2010-11-24
+
+1) DirectDraw is deprecated.However, we still use it (compatible with DX 7 and up).
+
+The ddutil and dxutil files have been modified slightly to use wide char strings, making them compatible with the latest MS SDK, and using d3d9.h instead of d3d.h
+
+ddraw.h is no longer a part of the DX SDK, but is part of the Windows SDK apparently. Therefore it works even with the latest DX SDK
+
+ddraw.lib has been removed from the DX SDK. I copied an older version into its x86 lib directory and added it to the linker directories
+
+winmm.lib needs to be added explicitly to the linked libraries in project settings. dxutil needs it.
+
+
+It is probably better though to overhaul the dx part and use direct3d commands instead. ddraw is gradually disappearing.
+
+
+2) For VSG and NI you need to download the SDKs and add both the include directory and the lib directory to the project properties.
+The lib files themselves are added using a #pragma statement, you don't need to add them to project properties.
